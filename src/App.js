@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import HomePage from './HomePage';
+import DocumentEditor from './DocumentEditor';
 
 function App() {
+  const [currentView, setCurrentView] = useState('home');
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
+
+  const handleSelectTemplate = (templateId, templateName) => {
+    setSelectedTemplate({ id: templateId, name: templateName });
+    setCurrentView('editor');
+  };
+
+  const handleBackToHome = () => {
+    setCurrentView('home');
+    setSelectedTemplate(null);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentView === 'home' ? (
+        <HomePage onSelectTemplate={handleSelectTemplate} />
+      ) : (
+        <DocumentEditor 
+          template={selectedTemplate}
+          onBack={handleBackToHome}
+        />
+      )}
     </div>
   );
 }
