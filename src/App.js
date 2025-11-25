@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import HomePage from './HomePage';
 import DocumentEditor from './DocumentEditor';
+import DocumentEditorWithPilot from './DocumentEditorWithPilot';
 
 function App() {
   const [currentView, setCurrentView] = useState('home');

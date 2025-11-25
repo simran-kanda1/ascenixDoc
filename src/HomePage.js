@@ -6,6 +6,11 @@ function HomePage({ onSelectTemplate }) {
       id: 'v2_0_without_pilot',
       name: 'v2.0 Without Pilot',
       description: 'User Agreement Template'
+    },
+    {
+      id: 'with_pilot',
+      name: 'With Pilot Agreement',
+      description: 'Pilot Agreement Template'
     }
   ];
 
@@ -23,7 +28,7 @@ function HomePage({ onSelectTemplate }) {
         </div>
 
         {/* Template Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {templates.map((template) => (
             <div
               key={template.id}
